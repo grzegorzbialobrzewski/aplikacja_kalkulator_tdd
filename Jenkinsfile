@@ -14,8 +14,8 @@ pipeline {
         }
         stage('Test') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '$BRANCH']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/grzegorzbialobrzewski/aplikacja_kalkulator_tdd.git']]])
                 script{
+                    checkout([$class: 'GitSCM', branches: [[name: '$BRANCH']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/grzegorzbialobrzewski/aplikacja_kalkulator_tdd.git']]])
                     sh 'echo Testing...'
                     sh 'python3.8 -m pytest --html=report.html'
                 }
